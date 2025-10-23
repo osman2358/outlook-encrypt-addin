@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Encrypt Add-in - Contoso</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; margin:12px; color:#222; }
+    h3 { margin: 0 0 10px 0; }
+    #labelsSelect { width:100%; padding:8px; margin-top:8px; }
+    #applyBtn { margin-top:12px; padding:8px 12px; }
+    #status { margin-top:10px; color:#444; }
+    #loading { color:#666; }
+  </style>
+</head>
+<body>
+  <h3>Aplicar etiqueta de sensibilidad</h3>
+  <div id="loading">Cargando etiquetas…</div>
+  <div id="no-labels" style="display:none;">No hay etiquetas publicadas para este buzón.</div>
+
+  <label for="labelsSelect" id="labelForSelect" style="display:none;">Selecciona una etiqueta</label>
+  <select id="labelsSelect" style="display:none;"></select>
+
+  <button id="applyBtn" style="display:none;">Aplicar etiqueta seleccionada</button>
+
+  <div id="status" role="status" aria-live="polite"></div>
+
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script src="functions.js"></script>
+</body>
+</html>

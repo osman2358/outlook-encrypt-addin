@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp
+  xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+  xsi:type="MailApp">
+
+  <Id>9b8d6c1e-3f4a-4b2d-9c8f-1a2b3c4d5e6f</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>TuOrganizacion</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+
+  <DisplayName DefaultValue="Contoso Encrypt Add-in" />
+  <Description DefaultValue="Add-in para aplicar etiquetas de sensibilidad (Encrypt) desde la ventana de composición." />
+  <SupportUrl DefaultValue="https://1yhph.sharepoint.com/sites/App_Host_Files" />
+
+  <AppDomains>
+    <AppDomain>https://1yhph.sharepoint.com</AppDomain>
+  </AppDomains>
+
+  <Permissions>ReadWriteItem</Permissions>
+
+  <VersionOverrides
+    xmlns="http://schemas.microsoft.com/office/mailappversionoverrides"
+    xsi:type="VersionOverridesV1_0">
+
+    <Requirements>
+      <bt:Sets DefaultMinVersion="1.13">
+        <bt:Set Name="Mailbox" MinVersion="1.13" />
+      </bt:Sets>
+    </Requirements>
+
+    <Hosts>
+      <Host xsi:type="MailHost">
+        <DesktopFormFactor>
+
+          <FunctionFile resid="functionFile" />
+
+          <ExtensionPoint xsi:type="MessageComposeCommandSurface">
+            <OfficeTab id="TabDefault">
+              <Group id="Contoso.Group1" label="Contoso Security">
+                <Control xsi:type="Button" id="Contoso.EncryptButton">
+                  <Label resid="encryptButtonLabel" />
+                  <Supertip>
+                    <Title resid="encryptButtonLabel" />
+                    <Description resid="encryptButtonDesc" />
+                  </Supertip>
+                  <Action xsi:type="ShowTaskpane">
+                    <SourceLocation resid="functionFile" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+
+        </DesktopFormFactor>
+      </Host>
+    </Hosts>
+
+    <Resources>
+      <bt:Urls>
+        <!-- Usamos la URL de compartición que confirmaste -->
+        <bt:Url id="functionFile" DefaultValue="https://1yhph.sharepoint.com/sites/App_Host_Files/Shared%20Documents/EncryptionApp/functions.html" />
+      </bt:Urls>
+
+      <bt:ShortStrings>
+        <bt:String id="encryptButtonLabel" DefaultValue="Encrypt" />
+      </bt:ShortStrings>
+
+      <bt:LongStrings>
+        <bt:String id="encryptButtonDesc" DefaultValue="Abrir panel para seleccionar y aplicar etiqueta de cifrado" />
+      </bt:LongStrings>
+    </Resources>
+
+  </VersionOverrides>
+</OfficeApp>
